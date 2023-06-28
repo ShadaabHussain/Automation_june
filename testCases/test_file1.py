@@ -12,7 +12,7 @@ headless_option.add_argument("headless")
 
 class Test_Pytet:
 
-    @pytest.mark.skip
+    @pytest.mark.regression
     def test_sum_001(self):
         a = 4
         b = 3
@@ -23,7 +23,7 @@ class Test_Pytet:
         else:
             assert False
 
-    @pytest.mark.skip
+    @pytest.mark.regression
     def test_minus_002(self):
         a = 5
         b = 2
@@ -58,7 +58,7 @@ class Test_Pytet:
         else:
             assert False
 
-    @pytest.mark.sanity
+    @pytest.mark.regression
     def test_Registration_004(self):
         driver = webdriver.Chrome(options=headless_option)
 
@@ -87,7 +87,7 @@ class Test_Pytet:
         except (NoSuchElementException, TimeoutException):
             print("Registration Failed")
 
-    @pytest.mark.sanity
+    @pytest.mark.regression
     def test_login_005(self):
 
         driver = webdriver.Chrome(options=headless_option)
