@@ -10,7 +10,7 @@ driver.find_element(By.XPATH,'//*[@id="navbar"]/ul[2]/li[4]/a').click()
 
 driver.find_element(By.ID,"name").send_keys("Test1")
 
-driver.find_element(By.ID,"email").send_keys("test21@gmail.com")
+driver.find_element(By.ID,"email").send_keys("test28@gmail.com")
 
 driver.find_element(By.ID,"password").send_keys("Vampire@123")
 
@@ -30,7 +30,7 @@ try:
 except (NoSuchElementException , TimeoutException):
     print("Registration Failed")
 
-
+driver.close()
 
 
 

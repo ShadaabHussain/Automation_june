@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <title>Test Report</title>
+    <title>myreport.html</title>
     <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
   <body onLoad="init()">
     <script>/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -70,9 +70,19 @@ function hideExtras(colresultElem) {
 }
 
 function showFilters() {
+    let visibleString = getQueryParameter('visible') || 'all';
+    visibleString = visibleString.toLowerCase();
+    const checkedItems = visibleString.split(',');
+
     const filterItems = document.getElementsByClassName('filter');
-    for (let i = 0; i < filterItems.length; i++)
+    for (let i = 0; i < filterItems.length; i++) {
         filterItems[i].hidden = false;
+
+        if (visibleString != 'all') {
+            filterItems[i].checked = checkedItems.includes(filterItems[i].getAttribute('data-test-result'));
+            filterTable(filterItems[i]);
+        }
+    }
 }
 
 function addCollapse() {
@@ -243,27 +253,10 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>myreport.html</h1>
-    <p>Report generated on 28-Jun-2023 at 11:40:18 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
-    <h2>Environment</h2>
-    <table id="environment">
-      <tr>
-        <td>JAVA_HOME</td>
-        <td>C:\Program Files\Java\jdk1.8.0_333</td></tr>
-      <tr>
-        <td>Packages</td>
-        <td>{"pluggy": "1.0.0", "py": "1.11.0", "pytest": "7.1.2"}</td></tr>
-      <tr>
-        <td>Platform</td>
-        <td>Windows-10-10.0.19045-SP0</td></tr>
-      <tr>
-        <td>Plugins</td>
-        <td>{"allure-pytest": "2.9.45", "forked": "1.4.0", "html": "3.1.1", "metadata": "2.0.1", "xdist": "2.5.0"}</td></tr>
-      <tr>
-        <td>Python</td>
-        <td>3.10.5</td></tr></table>
+    <p>Report generated on 22-Jul-2023 at 13:59:47 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Summary</h2>
-    <p>3 tests ran in 19.78 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">3 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">2 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>2 tests ran in 24.71 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">2 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -274,59 +267,23 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">testCases/test_file1.py::Test_Pytet::test_sum_001</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw0] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/>[gw0] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/>(&#x27;C:\\Users\\SHADAB\\PycharmProjects\\Automation_june\\testCases\\test_file1.py&#x27;, 15, &#x27;Skipped: unconditional skip&#x27;)[gw0] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/></div></td></tr></tbody>
-      <tbody class="skipped results-table-row">
-        <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">testCases/test_file1.py::Test_Pytet::test_minus_002</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw1] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/>[gw1] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/>(&#x27;C:\\Users\\SHADAB\\PycharmProjects\\Automation_june\\testCases\\test_file1.py&#x27;, 26, &#x27;Skipped: unconditional skip&#x27;)[gw1] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">testCases/test_file1.py::Test_Pytet::test_Credence_003</td>
-          <td class="col-duration">13.27</td>
+          <td class="col-name">testCases/test_Registration.py::Test_registration::test_regis001</td>
+          <td class="col-duration">8.55</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">[gw2] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/>[gw2] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe[gw2] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe[gw2] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/> ------------------------------Captured stdout call------------------------------ <br/>6
-+91 8983282704
-+91 8237916162
-+91 7385318590
-+91 9579064658
-+91 9091929355
-+91 9370733829
-[&#x27;+91 8983282704&#x27;, &#x27;+91 8237916162&#x27;, &#x27;+91 7385318590&#x27;, &#x27;+91 9579064658&#x27;, &#x27;+91 9091929355&#x27;, &#x27;+91 9370733829&#x27;]
-0
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Registration Failed
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">testCases/test_file1.py::Test_Pytet::test_Registration_004</td>
-          <td class="col-duration">10.49</td>
+          <td class="col-name">testCases/test_login.py::Test_Login::test_login002</td>
+          <td class="col-duration">15.99</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">[gw0] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/>[gw0] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe[gw0] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe[gw0] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/> ------------------------------Captured stdout call------------------------------ <br/>Registration Failed
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">testCases/test_file1.py::Test_Pytet::test_login_005</td>
-          <td class="col-duration">17.08</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">[gw1] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/>[gw1] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe[gw1] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe[gw1] win32 -- Python 3.10.5 C:\Users\SHADAB\AppData\Local\Programs\Python\Python310\python.exe<br/> ------------------------------Captured stdout call------------------------------ <br/>Login is completed
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Registration is completed
 <br/></div></td></tr></tbody></table></body></html>
